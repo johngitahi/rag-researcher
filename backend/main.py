@@ -17,11 +17,16 @@ load_dotenv()
 # Initialize FastAPI app
 app = FastAPI()
 
+allowed_origins = [
+        "https://gitahi.site",
+        "https://thyyme.com",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Specifies allowed origins
+    allow_origins=allowed_origins,  # Specifies allowed origins
     allow_credentials=True,
-    allow_methods=["*"],  # Allows all HTTP methods (GET, POST, etc.)
+    allow_methods=["OPTIONS", "POST"],  # Allows only GET & POST
     allow_headers=["*"],  # Allows all headers
 )
 
